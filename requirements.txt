@@ -8,3 +8,6 @@ scikit-learn
 nltk
 transformers
 torch
+streamlit
+nbformat
+nbconvert
