@@ -1,19 +1,29 @@
 import streamlit as st
 import nbformat
-from nbconvert import HTMLExporter
+import base64
 
 st.title("🤖 Model Experiments (v7.ipynb)")
 
-def render_notebook(path):
+def render_outputs_only(path):
     with open(path, "r", encoding="utf-8") as f:
-        notebook = nbformat.read(f, as_version=4)
+        nb = nbformat.read(f, as_version=4)
 
-    html_exporter = HTMLExporter()
-    html_exporter.template_name = "classic"
+    for cell in nb.cells:
+        if cell.cell_type == "code":
+            for output in cell.get("outputs", []):
 
-    (body, resources) = html_exporter.from_notebook_node(notebook)
+                # 📊 SHOW PLOTS (matplotlib / seaborn)
+                if "image/png" in output.get("data", {}):
+                    img = output["data"]["image/png"]
+                    st.image(base64.b64decode(img))
 
-    st.components.v1.html(body, height=800, scrolling=True)
+                # 📋 SHOW TABLES (pandas HTML)
+                elif "text/html" in output.get("data", {}):
+                    st.markdown(output["data"]["text/html"], unsafe_allow_html=True)
 
-# Load your notebook
-render_notebook("v7.ipynb")
+                # 🧾 OPTIONAL: show text results
+                elif "text/plain" in output.get("data", {}):
+                    st.text(output["data"]["text/plain"])
+
+# Call function
+render_outputs_only("v7.ipynb")
