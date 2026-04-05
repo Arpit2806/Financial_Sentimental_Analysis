@@ -11,4 +11,3 @@ torch
 streamlit
 nbformat
 nbconvert
-tensorflow
