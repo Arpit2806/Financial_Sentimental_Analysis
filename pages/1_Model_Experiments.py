@@ -32,8 +32,12 @@ def model_experiments_page():
     # -----------------------------------------
     # LOAD DATA
     # -----------------------------------------
-    df = pd.read_csv("all-data.csv", encoding="latin-1")
-    df.columns = ["sentiment", "text"]
+    try:
+        df = pd.read_csv("data/all-data.csv", encoding="latin-1")
+        df.columns = ["sentiment", "text"]
+    except:
+        st.error("❌ Dataset not found. Make sure 'all-data.csv' is inside /data folder.")
+        return
 
     st.subheader("📊 Dataset Overview")
     st.dataframe(df.head())
@@ -100,14 +104,15 @@ def model_experiments_page():
     # -----------------------------------------
     st.subheader("📈 Training Model")
 
-    history = model.fit(
-        X_train,
-        y_train,
-        epochs=3,   # keep small for speed
-        batch_size=32,
-        validation_split=0.2,
-        verbose=0
-    )
+    with st.spinner("Training model... please wait ⏳"):
+        history = model.fit(
+            X_train,
+            y_train,
+            epochs=2,   # keep low for speed
+            batch_size=32,
+            validation_split=0.2,
+            verbose=0
+        )
 
     st.success("Model training completed.")
 
@@ -156,4 +161,7 @@ def model_experiments_page():
     # FINAL INSIGHT
     # -----------------------------------------
     st.success("🚀 LSTM model successfully captures sentiment patterns in financial text.")
-    model_experiments_page()
+
+
+# ✅ IMPORTANT: CALL FUNCTION OUTSIDE
+model_experiments_page()
