@@ -156,4 +156,4 @@ def model_experiments_page():
     # FINAL INSIGHT
     # -----------------------------------------
     st.success("🚀 LSTM model successfully captures sentiment patterns in financial text.")
-model_experiments_page()
+    model_experiments_page()
