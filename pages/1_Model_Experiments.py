@@ -1,42 +1,42 @@
 import streamlit as st
-import pandas as pd
-import plotly.express as px
+import nbformat
+import base64
 
-st.title("🤖 Model Experiments & Performance")
+st.title("🤖 Model Experiments (LSTM + Attention)")
 
-@st.cache_data
-def load_data():
-    return pd.read_csv("data/all-data.csv")
+def render_clean_notebook(path):
+    with open(path, "r", encoding="utf-8") as f:
+        nb = nbformat.read(f, as_version=4)
 
-df = load_data()
+    current_section = "📊 Analysis"
 
-# ---- DATA PREVIEW ----
-st.subheader("📊 Dataset Overview")
-st.dataframe(df.head())
+    for cell in nb.cells:
 
-# ---- SENTIMENT DISTRIBUTION ----
-st.subheader("📈 Sentiment Distribution")
+        # 🧠 Use markdown as section titles
+        if cell.cell_type == "markdown":
+            text = "".join(cell.source)
 
-fig1 = px.histogram(df, x="sentiment", color="sentiment")
-st.plotly_chart(fig1, use_container_width=True)
+            # pick only headings
+            if text.strip().startswith("#"):
+                current_section = text.replace("#", "").strip()
+                st.subheader(current_section)
 
-# ---- TEXT LENGTH ANALYSIS ----
-st.subheader("📝 Text Length Analysis")
+        # 📊 Show only outputs from code cells
+        elif cell.cell_type == "code":
+            for output in cell.get("outputs", []):
 
-df["text_length"] = df["text"].apply(len)
+                data = output.get("data", {})
 
-fig2 = px.histogram(df, x="text_length", nbins=50)
-st.plotly_chart(fig2, use_container_width=True)
+                # Show plots
+                if "image/png" in data:
+                    img = base64.b64decode(data["image/png"])
+                    st.image(img, use_container_width=True)
 
-# ---- MODEL PERFORMANCE (FROM YOUR V7 LOGIC) ----
-st.subheader("⚙️ Model Performance Comparison")
+                # Show tables
+                elif "text/html" in data:
+                    st.markdown(data["text/html"], unsafe_allow_html=True)
 
-# Replace with your actual results from notebook
-models = ["Logistic Regression", "Random Forest", "XGBoost"]
-accuracy = [0.78, 0.85, 0.88]
+                # Skip raw text to keep UI clean
 
-fig3 = px.bar(x=models, y=accuracy, color=models)
-st.plotly_chart(fig3, use_container_width=True)
-
-# ---- INSIGHT BOX ----
-st.info("📌 XGBoost shows highest accuracy in predicting sentiment-driven market movement.")
+# 🔥 Call function
+render_clean_notebook("v7.ipynb")
