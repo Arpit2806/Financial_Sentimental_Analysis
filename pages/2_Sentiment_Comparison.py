@@ -1,16 +1,19 @@
 import streamlit as st
+import nbformat
+from nbconvert import HTMLExporter
 
-st.title("🧠 Sentiment Comparison (VADER vs FinBERT)")
+st.title("🧠 Sentiment Analysis (VADER vs FinBERT)")
 
-st.markdown("""
-This page shows:
-- Sentiment analysis models
-- Comparison of VADER vs FinBERT
-- Charts, graphs, and results
-""")
+def render_notebook(path):
+    with open(path, "r", encoding="utf-8") as f:
+        notebook = nbformat.read(f, as_version=4)
 
-st.warning("👉 Next step: we will load your financial_sentiment_analysis.ipynb outputs here")
+    html_exporter = HTMLExporter()
+    html_exporter.template_name = "classic"
 
-# Placeholder
-st.subheader("📊 Sentiment Analysis Results")
-st.write("Visualizations from financial_sentiment_analysis.ipynb will appear here")
+    (body, resources) = html_exporter.from_notebook_node(notebook)
+
+    st.components.v1.html(body, height=800, scrolling=True)
+
+# Load your notebook
+render_notebook("financial_sentiment_analysis.ipynb")
