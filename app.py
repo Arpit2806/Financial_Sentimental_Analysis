@@ -6,70 +6,48 @@ st.set_page_config(
 )
 
 # -------------------------------
-# 🎨 CLASSY DARK FINTECH THEME
+# 🎨 CLEAN LIGHT FINTECH STYLE
 # -------------------------------
 st.markdown("""
 <style>
 
-/* ---- GLOBAL BACKGROUND ---- */
-body {
-    background-color: #0f172a;
-}
-
-/* ---- MAIN CONTENT AREA ---- */
+/* Better spacing */
 .block-container {
     padding-top: 2rem;
-    background-color: #111827;
-    border-radius: 12px;
-    padding: 2rem;
 }
 
-/* ---- SIDEBAR ---- */
-section[data-testid="stSidebar"] {
-    background-color: #020617;
-}
-
-/* ---- HEADINGS ---- */
+/* Headings */
 h1 {
-    color: #f8fafc;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 h2, h3 {
-    color: #e2e8f0;
+    margin-top: 1rem;
 }
 
-/* ---- TEXT ---- */
-p, li {
-    color: #cbd5e1;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-/* ---- DIVIDER ---- */
+/* Subtle divider */
 hr {
-    border: 0.5px solid #334155;
+    border: 0.5px solid #e5e7eb;
 }
 
-/* ---- FOOTER ---- */
+/* Footer */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #020617;
-    color: #94a3b8;
+    background-color: #f9fafb;
+    color: #6b7280;
     text-align: center;
-    padding: 12px;
+    padding: 10px;
     font-size: 13px;
-    letter-spacing: 1px;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
 # -------------------------------
-# 🏠 HOME PAGE CONTENT
+# 🏠 HOME PAGE
 # -------------------------------
 st.title("🏠 About Capstone")
 
@@ -81,7 +59,7 @@ st.markdown("""
 ---
 
 ### 📌 Overview
-A system designed to extract **actionable insights from financial news** using advanced NLP and deep learning techniques.
+A system designed to extract **actionable insights from financial news** using NLP and deep learning models.
 
 ---
 
@@ -90,34 +68,34 @@ A system designed to extract **actionable insights from financial news** using a
 **Model Analysis**
 - Baseline LSTM  
 - BiLSTM with Attention  
-- Captures contextual dependencies in financial text  
+- Captures contextual relationships in financial text  
 
 **Sentiment Engine**
-- VADER (rule-based baseline)  
-- FinBERT (financial domain model)  
-- Comparative evaluation of sentiment accuracy  
+- VADER (rule-based)  
+- FinBERT (financial-domain model)  
+- Comparative performance evaluation  
 
 **Prediction Interface**
-- Upload financial datasets  
-- Analyze sentiment distribution  
-- Generate quick predictions  
+- Upload datasets  
+- Analyze sentiment  
+- Generate predictions  
 
 ---
 
 ### 📊 Capabilities
 
 - Sentiment classification (Positive / Neutral / Negative)  
-- Model performance comparison  
+- Model comparison  
 - Interactive visualizations  
 - Dataset-driven insights  
 
 ---
 
-### 🎯 Application Value
+### 🎯 Business Value
 
 - Faster interpretation of financial news  
 - Identification of sentiment-driven trends  
-- Improved analytical decision-making  
+- Better decision support  
 
 ---
 
@@ -125,14 +103,14 @@ A system designed to extract **actionable insights from financial news** using a
 
 1. Data ingestion  
 2. Preprocessing  
-3. Model-based classification  
-4. Comparative evaluation  
-5. Visualization & insights  
+3. Model analysis  
+4. Sentiment evaluation  
+5. Visualization  
 
 """)
 
 # -------------------------------
-# 📌 FIXED FOOTER
+# 📌 FOOTER
 # -------------------------------
 st.markdown(
     '<div class="footer">FINAL CAPSTONE PROJECT</div>',
