@@ -189,22 +189,23 @@ with col2:
 # ROW 2 (Blocks 3 & 4)
 col3, col4 = st.columns(2)
 
+# Fixed block 3 here to prevent the raw HTML leak
 with col3:
     st.markdown("""
     <div class="cyber-card-grid">
         <h3>⚙️ Core Modules</h3>
-        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.2rem;">Model Analysis</p>
+        <p style="color:#ffffff; margin-bottom:0.2rem;"><strong>Model Analysis</strong></p>
         <ul style="padding-left: 1.2rem; margin-bottom:0.5rem;">
             <li>Baseline LSTM</li>
             <li>BiLSTM with Attention</li>
         </ul>
         
-        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.2rem;">Sentiment Engine</p>
+        <p style="color:#ffffff; margin-bottom:0.2rem;"><strong>Sentiment Engine</strong></p>
         <ul style="padding-left: 1.2rem; margin-bottom:0.5rem;">
             <li>VADER (rule-based) and FinBERT</li>
         </ul>
         
-        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.2rem;">Prediction Interface</p>
+        <p style="color:#ffffff; margin-bottom:0.2rem;"><strong>Prediction Interface</strong></p>
         <ul style="padding-left: 1.2rem;">
             <li>Analyze custom text sentiment</li>
         </ul>
@@ -223,7 +224,7 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
-# ROW 3 (Block 5 - Left exactly as it was)
+# ROW 3 (Block 5)
 st.markdown("""
 <div class="cyber-card-flow">
     <h3>🔁 Workflow</h3>
