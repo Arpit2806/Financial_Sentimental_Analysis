@@ -6,54 +6,74 @@ st.set_page_config(
 )
 
 # -------------------------------
-# 🎨 PREMIUM DARK FINTECH STYLE
+# 🎨 CLASSY DARK FINTECH THEME
 # -------------------------------
 st.markdown("""
 <style>
-/* Main background */
+
+/* ---- GLOBAL BACKGROUND ---- */
 body {
-    background-color: #0e1117;
+    background-color: #0f172a;
 }
 
-/* Sidebar */
-section[data-testid="stSidebar"] {
-    background-color: #111827;
-}
-
-/* Titles */
-h1, h2, h3 {
-    color: #e5e7eb;
-}
-
-/* Text */
-p, li {
-    color: #9ca3af;
-}
-
-/* Cards */
+/* ---- MAIN CONTENT AREA ---- */
 .block-container {
     padding-top: 2rem;
+    background-color: #111827;
+    border-radius: 12px;
+    padding: 2rem;
 }
 
-/* Footer */
+/* ---- SIDEBAR ---- */
+section[data-testid="stSidebar"] {
+    background-color: #020617;
+}
+
+/* ---- HEADINGS ---- */
+h1 {
+    color: #f8fafc;
+    font-weight: 600;
+}
+
+h2, h3 {
+    color: #e2e8f0;
+}
+
+/* ---- TEXT ---- */
+p, li {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ---- DIVIDER ---- */
+hr {
+    border: 0.5px solid #334155;
+}
+
+/* ---- FOOTER ---- */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #111827;
-    color: #9ca3af;
+    background-color: #020617;
+    color: #94a3b8;
     text-align: center;
-    padding: 10px;
-    font-size: 14px;
+    padding: 12px;
+    font-size: 13px;
+    letter-spacing: 1px;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
 # -------------------------------
-# 🏠 HOME TITLE (REPLACES "app")
+# 🏠 HOME PAGE CONTENT
 # -------------------------------
 st.title("🏠 About Capstone")
+
+st.markdown("### Financial Analytics Dashboard")
 
 st.markdown("""
 ## 💡 AI-Driven Financial Sentiment Intelligence
@@ -61,49 +81,42 @@ st.markdown("""
 ---
 
 ### 📌 Overview
-
-This project builds a **financial sentiment intelligence system** that transforms 
-unstructured news data into meaningful market insights.
-
-It leverages:
-- Deep Learning (LSTM, BiLSTM + Attention)
-- NLP techniques for text understanding
-- Financial-domain sentiment analysis
+A system designed to extract **actionable insights from financial news** using advanced NLP and deep learning techniques.
 
 ---
 
-### ⚙️ System Architecture
+### ⚙️ Core Modules
 
-**1. Model Layer**
+**Model Analysis**
 - Baseline LSTM  
 - BiLSTM with Attention  
-- Captures sequential and contextual patterns  
+- Captures contextual dependencies in financial text  
 
-**2. Sentiment Layer**
+**Sentiment Engine**
 - VADER (rule-based baseline)  
-- FinBERT (domain-specific model)  
-- Comparative evaluation  
+- FinBERT (financial domain model)  
+- Comparative evaluation of sentiment accuracy  
 
-**3. Application Layer**
-- Interactive dashboard  
-- Dataset ingestion  
-- Real-time sentiment exploration  
+**Prediction Interface**
+- Upload financial datasets  
+- Analyze sentiment distribution  
+- Generate quick predictions  
 
 ---
 
-### 📊 Key Capabilities
+### 📊 Capabilities
 
 - Sentiment classification (Positive / Neutral / Negative)  
-- Model comparison and evaluation  
-- Visualization of sentiment distribution  
-- Interactive dataset analysis  
+- Model performance comparison  
+- Interactive visualizations  
+- Dataset-driven insights  
 
 ---
 
-### 🎯 Practical Value
+### 🎯 Application Value
 
 - Faster interpretation of financial news  
-- Identification of sentiment-driven signals  
+- Identification of sentiment-driven trends  
 - Improved analytical decision-making  
 
 ---
@@ -119,7 +132,7 @@ It leverages:
 """)
 
 # -------------------------------
-# 📌 FOOTER (FIXED)
+# 📌 FIXED FOOTER
 # -------------------------------
 st.markdown(
     '<div class="footer">FINAL CAPSTONE PROJECT</div>',
