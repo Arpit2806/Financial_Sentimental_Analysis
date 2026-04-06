@@ -159,17 +159,30 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
 
+    # FIXED: Replaced buggy raw HTML with standard clean markdown inside the card
     st.markdown("""
     <div class="cyber-card">
         <h3>⚙️ Core Modules</h3>
-        <p style="margin-bottom: 1rem;"><strong style="color:#ffffff;">Model Analysis</strong><br>
-        • Baseline LSTM<br>• BiLSTM with Attention<br>• Captures contextual relationships in financial text</p>
+        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.5rem;">Model Analysis</p>
+        <ul style="padding-left: 1.2rem; margin-bottom:1rem;">
+            <li>Baseline LSTM</li>
+            <li>BiLSTM with Attention</li>
+            <li>Captures contextual relationships in financial text</li>
+        </ul>
         
-        <p style="margin-bottom: 1rem;"><strong style="color:#ffffff;">Sentiment Engine</strong><br>
-        • VADER (rule-based)<br>• FinBERT (financial-domain model)<br>• Comparative performance evaluation</p>
+        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.5rem;">Sentiment Engine</p>
+        <ul style="padding-left: 1.2rem; margin-bottom:1rem;">
+            <li>VADER (rule-based)</li>
+            <li>FinBERT (financial-domain model)</li>
+            <li>Comparative performance evaluation</li>
+        </ul>
         
-        <p><strong style="color:#ffffff;">Prediction Interface</strong><br>
-        • Upload datasets<br>• Analyze sentiment<br>• Generate predictions</p>
+        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.5rem;">Prediction Interface</p>
+        <ul style="padding-left: 1.2rem;">
+            <li>Upload datasets</li>
+            <li>Analyze sentiment</li>
+            <li>Generate predictions</li>
+        </ul>
     </div>
     """, unsafe_allow_html=True)
 
