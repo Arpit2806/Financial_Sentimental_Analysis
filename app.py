@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 # ------------------------------------
-# 🎨 UNIFIED SEAMLESS CYBER THEME
+# 🎨 HIGH-CONTRAST NEOMORPHIC THEME
 # ------------------------------------
 st.markdown("""
 <style>
@@ -18,42 +18,47 @@ html, body, [class*="css"], .stMarkdown {
     font-family: 'Outfit', sans-serif !important;
 }
 
-/* 1. SEAMLESS BACKGROUND (No more blocky sidebar!) */
-.stApp, [data-testid="stSidebar"] {
-    background-color: #0b0f19 !important;
-    background-image: radial-gradient(circle at top right, #1a233a, #0b0f19) !important;
+/* 1. VAPORIZE THE TOP WHITE BAR & FIX PADDING */
+header[data-testid="stHeader"] {
+    background: #090d16 !important;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
 }
 
-/* Make the line dividing sidebar and page invisible for a true borderless look */
+.block-container {
+    padding-top: 3rem !important;
+    padding-bottom: 6rem !important;
+    max-width: 1200px;
+}
+
+/* 2. SIDEBAR: Ultra-Dark Command Center */
 [data-testid="stSidebar"] {
-    border-right: none !important;
+    background-color: #05080f !important;
+    border-right: 2px solid #1e293b !important;
 }
 
-/* 2. BRIGHTER SIDEBAR TEXT */
 [data-testid="stSidebar"] * {
-    color: #e2e8f0 !important;
+    color: #94a3b8 !important;
 }
 
-/* Active navigation item styling */
+/* Active navigation link in the sidebar */
 [data-testid="stSidebarNav"] ul li div {
+    background-color: #0f172a !important;
     border-radius: 8px !important;
 }
 
-/* 3. FIX TITLE CLIPPING & PADDING */
-.block-container {
-    padding-top: 6rem !important;
-    padding-bottom: 5rem !important;
-    max-width: 1200px;
+/* 3. MAIN PAGE CANVAS: Noticeably lighter rich navy */
+.stApp {
+    background-color: #0f172a !important;
+    background-image: radial-gradient(circle at top, #1e293b, #0f172a) !important;
 }
 
 /* High-contrast typography */
 h1 {
     font-weight: 800 !important;
     color: #ffffff !important;
-    letter-spacing: -0.03em !important;
     font-size: 2.8rem !important;
     margin-bottom: 0.5rem !important;
-    line-height: 1.4 !important;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
 }
 
 h2 {
@@ -65,76 +70,75 @@ h2 {
 
 h3 {
     font-weight: 600 !important;
-    color: #06b6d4 !important;
+    color: #10b981 !important; /* Electric Emerald for a distinct module pop */
     font-size: 1.25rem !important;
     margin-bottom: 1rem !important;
 }
 
-/* Glowing Cards */
+/* 4. CARDS: Floating with sharp distinct borders */
 .cyber-card {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: #070a12 !important;
     padding: 1.8rem;
     border-radius: 16px;
-    border: 1px solid rgba(56, 189, 248, 0.15);
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4);
+    border: 1px solid #1e293b;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     margin-bottom: 1.5rem;
     height: 100%;
 }
 
 .cyber-card:hover {
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: 0 4px 20px 0 rgba(56, 189, 248, 0.05);
-    transform: translateY(-2px);
+    border: 1px solid #10b981;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
     transition: all 0.3s ease;
 }
 
-/* Accents */
+/* List/Bullet styling inside cards to preserve contrast */
+.cyber-card p, .cyber-card span, .cyber-card li {
+    color: #cbd5e1 !important;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Custom Accents */
 .subtitle {
-    color: #a5b4fc !important;
+    color: #64748b !important;
     font-weight: 600 !important;
     font-size: 0.95rem !important;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
+/* Highlighting actionable text */
 .metric-highlight {
-    color: #34d399 !important;
+    color: #10b981 !important;
     font-weight: 600 !important;
 }
 
-/* Custom horizontal rule */
 hr {
     border: 0;
     height: 1px;
-    background: linear-gradient(to right, rgba(56, 189, 248, 0.5), rgba(0,0,0,0));
+    background: linear-gradient(to right, rgba(56, 189, 248, 0.3), rgba(0,0,0,0));
     margin: 1.5rem 0;
 }
 
-/* Footer */
+/* 5. FOOTER: Deep pitch black to contrast against the page canvas */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(11, 15, 25, 0.95);
-    backdrop-filter: blur(5px);
-    color: #64748b;
+    background-color: #03050a !important;
+    color: #475569 !important;
     text-align: center;
-    padding: 12px 0;
+    padding: 15px 0;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.15em;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    letter-spacing: 0.2em;
+    border-top: 1px solid #1e293b;
     z-index: 999;
 }
 </style>
 """, unsafe_allow_html=True)
-
-# Fake sidebar content just so the active page marker has a reference
-with st.sidebar:
-    st.markdown(" ") # Spacer to respect top layout
 
 # -------------------------------
 # 🏠 HOME PAGE
@@ -151,21 +155,21 @@ with col1:
     st.markdown("""
     <div class="cyber-card">
         <h3>📌 Overview</h3>
-        <p style="color: #94a3b8; line-height: 1.6;">A system designed to extract <span class="metric-highlight">actionable insights from financial news</span> using advanced Natural Language Processing and deep learning models.</p>
+        <p>A system designed to extract <span class="metric-highlight">actionable insights from financial news</span> using advanced Natural Language Processing and deep learning models.</p>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("""
     <div class="cyber-card">
         <h3>⚙️ Core Modules</h3>
-        <p style="margin-bottom: 1rem;"><strong style="color:#f8fafc;">Model Analysis</strong><br>
-        <span style="color:#94a3b8;">• Baseline LSTM<br>• BiLSTM with Attention<br>• Captures contextual relationships in financial text</span></p>
+        <p style="margin-bottom: 1rem;"><strong style="color:#ffffff;">Model Analysis</strong><br>
+        • Baseline LSTM<br>• BiLSTM with Attention<br>• Captures contextual relationships in financial text</p>
         
-        <p style="margin-bottom: 1rem;"><strong style="color:#f8fafc;">Sentiment Engine</strong><br>
-        <span style="color:#94a3b8;">• VADER (rule-based)<br>• FinBERT (financial-domain model)<br>• Comparative performance evaluation</span></p>
+        <p style="margin-bottom: 1rem;"><strong style="color:#ffffff;">Sentiment Engine</strong><br>
+        • VADER (rule-based)<br>• FinBERT (financial-domain model)<br>• Comparative performance evaluation</p>
         
-        <p><strong style="color:#f8fafc;">Prediction Interface</strong><br>
-        <span style="color:#94a3b8;">• Upload datasets<br>• Analyze sentiment<br>• Generate predictions</span></p>
+        <p><strong style="color:#ffffff;">Prediction Interface</strong><br>
+        • Upload datasets<br>• Analyze sentiment<br>• Generate predictions</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -173,27 +177,23 @@ with col2:
     st.markdown("""
     <div class="cyber-card">
         <h3>📊 Capabilities</h3>
-        <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid #06b6d4;">
-            <p style="margin-bottom: 0; color: #f8fafc; font-size: 14px;">⚡ Sentiment classification (Positive / Neutral / Negative)</p>
-        </div>
-        <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid #06b6d4;">
-            <p style="margin-bottom: 0; color: #f8fafc; font-size: 14px;">📈 Model comparison</p>
-        </div>
-        <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid #06b6d4;">
-            <p style="margin-bottom: 0; color: #f8fafc; font-size: 14px;">🎯 Interactive visualizations</p>
-        </div>
-        <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border-left: 3px solid #06b6d4;">
-            <p style="margin-bottom: 0; color: #f8fafc; font-size: 14px;">🗂️ Dataset-driven insights</p>
-        </div>
+        <ul style="padding-left: 1.2rem;">
+            <li>Sentiment classification (Positive / Neutral / Negative)</li>
+            <li>Model comparison</li>
+            <li>Interactive visualizations</li>
+            <li>Dataset-driven insights</li>
+        </ul>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("""
     <div class="cyber-card">
         <h3>🎯 Business Value</h3>
-        <p style="color: #94a3b8; line-height: 1.6;">• Faster interpretation of financial news<br>
-        • Identification of sentiment-driven trends<br>
-        • Better decision support</p>
+        <ul style="padding-left: 1.2rem;">
+            <li>Faster interpretation of financial news</li>
+            <li>Identification of sentiment-driven trends</li>
+            <li>Better decision support</li>
+        </ul>
     </div>
     """, unsafe_allow_html=True)
 
@@ -201,19 +201,22 @@ st.markdown("""
 <div class="cyber-card">
     <h3>🔁 Workflow</h3>
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 1rem;">
-        <span style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">1. Data Ingestion</span>
-        <span style="color: #64748b;">➔</span>
-        <span style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">2. Preprocessing</span>
-        <span style="color: #64748b;">➔</span>
-        <span style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">3. Model Analysis</span>
-        <span style="color: #64748b;">➔</span>
-        <span style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">4. Sentiment Eval</span>
-        <span style="color: #64748b;">➔</span>
-        <span style="background: #059669; color: #ffffff; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600;">5. Visualization</span>
+        <span style="background: #0f172a; color: #38bdf8; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid #1e293b;">1. Data Ingestion</span>
+        <span style="color: #475569;">➔</span>
+        <span style="background: #0f172a; color: #38bdf8; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid #1e293b;">2. Preprocessing</span>
+        <span style="color: #475569;">➔</span>
+        <span style="background: #0f172a; color: #38bdf8; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid #1e293b;">3. Model Analysis</span>
+        <span style="color: #475569;">➔</span>
+        <span style="background: #0f172a; color: #38bdf8; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid #1e293b;">4. Sentiment Eval</span>
+        <span style="color: #475569;">➔</span>
+        <span style="background: #10b981; color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600;">5. Visualization</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
+# -------------------------------
+# 📌 FOOTER
+# -------------------------------
 st.markdown(
     '<div class="footer">FINAL CAPSTONE PROJECT</div>',
     unsafe_allow_html=True
