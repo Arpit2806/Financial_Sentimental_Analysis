@@ -189,28 +189,24 @@ with col2:
 # ROW 2 (Blocks 3 & 4)
 col3, col4 = st.columns(2)
 
-# Fixed block 3 here to prevent the raw HTML leak
 with col3:
-    st.markdown("""
-    <div class="cyber-card-grid">
-        <h3>⚙️ Core Modules</h3>
-        <p style="color:#ffffff; margin-bottom:0.2rem;"><strong>Model Analysis</strong></p>
-        <ul style="padding-left: 1.2rem; margin-bottom:0.5rem;">
-            <li>Baseline LSTM</li>
-            <li>BiLSTM with Attention</li>
-        </ul>
-        
-        <p style="color:#ffffff; margin-bottom:0.2rem;"><strong>Sentiment Engine</strong></p>
-        <ul style="padding-left: 1.2rem; margin-bottom:0.5rem;">
-            <li>VADER (rule-based) and FinBERT</li>
-        </ul>
-        
-        <p style="color:#ffffff; margin-bottom:0.2rem;"><strong>Prediction Interface</strong></p>
-        <ul style="padding-left: 1.2rem;">
-            <li>Analyze custom text sentiment</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+    # Opened up the div tag first
+    st.markdown('<div class="cyber-card-grid">', unsafe_allow_html=True)
+    
+    # Rendered the internal parts natively via Streamlit's markdown to dodge the HTML bug
+    st.markdown("### ⚙️ Core Modules")
+    
+    st.markdown("**Model Analysis**")
+    st.markdown("* Baseline LSTM\n* BiLSTM with Attention")
+    
+    st.markdown("**Sentiment Engine**")
+    st.markdown("* VADER (rule-based) and FinBERT")
+    
+    st.markdown("**Prediction Interface**")
+    st.markdown("* Analyze custom text sentiment")
+    
+    # Closed the div tag safely
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with col4:
     st.markdown("""
