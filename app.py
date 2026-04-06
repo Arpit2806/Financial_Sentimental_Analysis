@@ -190,23 +190,26 @@ with col2:
 col3, col4 = st.columns(2)
 
 with col3:
-    # Opened up the div tag first
-    st.markdown('<div class="cyber-card-grid">', unsafe_allow_html=True)
-    
-    # Rendered the internal parts natively via Streamlit's markdown to dodge the HTML bug
-    st.markdown("### ⚙️ Core Modules")
-    
-    st.markdown("**Model Analysis**")
-    st.markdown("* Baseline LSTM\n* BiLSTM with Attention")
-    
-    st.markdown("**Sentiment Engine**")
-    st.markdown("* VADER (rule-based) and FinBERT")
-    
-    st.markdown("**Prediction Interface**")
-    st.markdown("* Analyze custom text sentiment")
-    
-    # Closed the div tag safely
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="cyber-card-grid">
+        <h3>⚙️ Core Modules</h3>
+        <p style="color:#ffffff; margin-bottom:0.2rem; font-weight:bold;">Model Analysis</p>
+        <p style="margin-left: 1rem; margin-bottom:0.5rem;">
+            • Baseline LSTM<br>
+            • BiLSTM with Attention
+        </p>
+        
+        <p style="color:#ffffff; margin-bottom:0.2rem; font-weight:bold;">Sentiment Engine</p>
+        <p style="margin-left: 1rem; margin-bottom:0.5rem;">
+            • VADER (rule-based) and FinBERT
+        </p>
+        
+        <p style="color:#ffffff; margin-bottom:0.2rem; font-weight:bold;">Prediction Interface</p>
+        <p style="margin-left: 1rem;">
+            • Analyze custom text sentiment
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col4:
     st.markdown("""
