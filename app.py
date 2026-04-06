@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 # ------------------------------------
-# 🎨 HIGH-CONTRAST NEOMORPHIC THEME
+# 🎨 HIGH-CONTRAST HYBRID THEME
 # ------------------------------------
 st.markdown("""
 <style>
@@ -18,16 +18,20 @@ html, body, [class*="css"], .stMarkdown {
     font-family: 'Outfit', sans-serif !important;
 }
 
-/* 1. VAPORIZE THE TOP WHITE BAR & FIX PADDING */
+/* 1. SEAMLESS TOP HEADER & PAGE CANVAS (Clean Light Grey) */
 header[data-testid="stHeader"] {
-    background: #090d16 !important;
-    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+    background-color: #f8fafc !important;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .block-container {
     padding-top: 3rem !important;
     padding-bottom: 6rem !important;
     max-width: 1200px;
+}
+
+.stApp {
+    background-color: #f8fafc !important;
 }
 
 /* 2. SIDEBAR: Ultra-Dark Command Center */
@@ -46,24 +50,17 @@ header[data-testid="stHeader"] {
     border-radius: 8px !important;
 }
 
-/* 3. MAIN PAGE CANVAS: Noticeably lighter rich navy */
-.stApp {
-    background-color: #0f172a !important;
-    background-image: radial-gradient(circle at top, #1e293b, #0f172a) !important;
-}
-
-/* High-contrast typography */
+/* High-contrast dark typography for the light page canvas */
 h1 {
     font-weight: 800 !important;
-    color: #ffffff !important;
+    color: #0f172a !important;
     font-size: 2.8rem !important;
     margin-bottom: 0.5rem !important;
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
 }
 
 h2 {
     font-weight: 600 !important;
-    color: #38bdf8 !important;
+    color: #0284c7 !important;
     font-size: 1.5rem !important;
     margin-top: 1.5rem !important;
 }
@@ -75,24 +72,24 @@ h3 {
     margin-bottom: 1rem !important;
 }
 
-/* 4. CARDS: Floating with sharp distinct borders */
+/* 3. CARDS: Retained the dark, floating command blocks */
 .cyber-card {
     background: #070a12 !important;
     padding: 1.8rem;
     border-radius: 16px;
     border: 1px solid #1e293b;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
     margin-bottom: 1.5rem;
     height: 100%;
 }
 
 .cyber-card:hover {
     border: 1px solid #10b981;
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
     transition: all 0.3s ease;
 }
 
-/* List/Bullet styling inside cards to preserve contrast */
+/* Text styling inside the dark cards */
 .cyber-card p, .cyber-card span, .cyber-card li {
     color: #cbd5e1 !important;
     font-size: 14px;
@@ -108,7 +105,6 @@ h3 {
     letter-spacing: 0.1em;
 }
 
-/* Highlighting actionable text */
 .metric-highlight {
     color: #10b981 !important;
     font-weight: 600 !important;
@@ -117,18 +113,18 @@ h3 {
 hr {
     border: 0;
     height: 1px;
-    background: linear-gradient(to right, rgba(56, 189, 248, 0.3), rgba(0,0,0,0));
+    background: linear-gradient(to right, #e2e8f0, rgba(0,0,0,0));
     margin: 1.5rem 0;
 }
 
-/* 5. FOOTER: Deep pitch black to contrast against the page canvas */
+/* 4. FOOTER: Deep pitch black to stand out at the bottom */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #03050a !important;
-    color: #475569 !important;
+    background-color: #05080f !important;
+    color: #64748b !important;
     text-align: center;
     padding: 15px 0;
     font-size: 11px;
@@ -159,25 +155,25 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
 
-    # FIXED: Replaced buggy raw HTML with standard clean markdown inside the card
+    # 🛠️ FIXED: Completely cleaned up to prevent ugly code blocks from rendering
     st.markdown("""
     <div class="cyber-card">
         <h3>⚙️ Core Modules</h3>
-        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.5rem;">Model Analysis</p>
+        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.2rem;">Model Analysis</p>
         <ul style="padding-left: 1.2rem; margin-bottom:1rem;">
             <li>Baseline LSTM</li>
             <li>BiLSTM with Attention</li>
             <li>Captures contextual relationships in financial text</li>
         </ul>
         
-        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.5rem;">Sentiment Engine</p>
+        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.2rem;">Sentiment Engine</p>
         <ul style="padding-left: 1.2rem; margin-bottom:1rem;">
             <li>VADER (rule-based)</li>
             <li>FinBERT (financial-domain model)</li>
             <li>Comparative performance evaluation</li>
         </ul>
         
-        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.5rem;">Prediction Interface</p>
+        <p style="font-weight:bold; color:#ffffff; margin-bottom:0.2rem;">Prediction Interface</p>
         <ul style="padding-left: 1.2rem;">
             <li>Upload datasets</li>
             <li>Analyze sentiment</li>
