@@ -5,51 +5,105 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---- SIDEBAR ----
+# -------------------------------
+# CUSTOM SIDEBAR (RENAMED)
+# -------------------------------
 st.sidebar.title("📊 Navigation")
-st.sidebar.info("""
-Select a module:
 
-1️⃣ Model Experiments  
-2️⃣ Sentiment Comparison  
-""")
+page = st.sidebar.radio(
+    "",
+    [
+        "About Capstone",
+        "Baseline LSTM vs BiLSTM+Attention",
+        "VADER vs FinBERT",
+        "Live Prediction"
+    ]
+)
 
-# ---- HOME PAGE ----
-st.title("💡 AI-Driven Financial News Sentiment Analysis")
+# -------------------------------
+# HOME PAGE
+# -------------------------------
+if page == "About Capstone":
 
-st.markdown("""
-### 🎯 What This Project Does
-- Analyze financial news using NLP  
-- Compare sentiment models  
-- Predict market movement  
+    st.title("💡 AI-Driven Financial Sentiment Intelligence")
 
----
+    st.markdown("""
+    ### 📌 Project Overview
 
-### ❓ Why This Matters
-Financial markets react instantly to news sentiment.  
-This project helps:
-- Understand sentiment trends  
-- Evaluate AI models  
-- Support better investment decisions  
+    This project develops a **financial sentiment intelligence system** that analyzes 
+    news data to extract meaningful signals for market understanding.
 
----
+    It combines:
+    - Natural Language Processing (NLP)
+    - Deep Learning Models
+    - Domain-specific sentiment analysis
 
-### 🔁 Project Flow
+    to transform unstructured financial text into actionable insights.
 
-➡️ Step 1: Model Experiments (ML models from v7.ipynb)  
-➡️ Step 2: Sentiment Comparison (VADER vs FinBERT)  
+    ---
 
----
+    ### ⚙️ Core Components
 
-### 📊 What You Will See in Dashboard
+    **1. Deep Learning Models**
+    - Baseline LSTM  
+    - BiLSTM with Attention mechanism  
+    - Captures contextual relationships in financial text  
 
-- Model performance comparisons  
-- Graphs & visualizations from notebooks  
-- Sentiment analysis insights  
+    **2. Sentiment Analysis Engines**
+    - VADER (rule-based)  
+    - FinBERT (financial domain NLP model)  
+    - Comparative evaluation for accuracy and relevance  
 
----
+    **3. Interactive Prediction System**
+    - Real-time sentiment inference  
+    - Dataset ingestion and visualization  
+    - Lightweight prediction logic for fast analysis  
 
-### 🧠 MBA Angle
-This dashboard acts as a **Decision Support System**  
-for investors using AI + NLP.
-""")
+    ---
+
+    ### 📊 Key Capabilities
+
+    - Sentiment classification (Positive / Neutral / Negative)  
+    - Model performance comparison  
+    - Visualization of sentiment trends  
+    - Dataset-driven insights  
+    - Interactive analysis interface  
+
+    ---
+
+    ### 🎯 Business Relevance
+
+    Financial markets are highly sensitive to news sentiment.
+
+    This system enables:
+    - Faster interpretation of market signals  
+    - Improved decision support  
+    - Identification of sentiment-driven trends  
+    - Better understanding of financial narratives  
+
+    ---
+
+    ### 🔁 Workflow
+
+    1. Data ingestion and preprocessing  
+    2. Model-based sentiment classification  
+    3. Comparative analysis of NLP approaches  
+    4. Visualization and interpretation  
+    5. Real-time user-driven prediction  
+
+    """)
+
+    st.markdown("---")
+    st.markdown("### 📌 FINAL CAPSTONE PROJECT")
+
+# -------------------------------
+# REDIRECT TO PAGES
+# -------------------------------
+elif page == "Baseline LSTM vs BiLSTM+Attention":
+    st.switch_page("pages/1_Model_Experiments.py")
+
+elif page == "VADER vs FinBERT":
+    st.switch_page("pages/2_Sentiment_Comparison.py")
+
+elif page == "Live Prediction":
+    st.switch_page("pages/3_Live_Prediction.py")
