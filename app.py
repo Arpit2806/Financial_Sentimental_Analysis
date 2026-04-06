@@ -6,104 +6,102 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# -------------------------------
-# 🎨 CUSTOM DUO-TONE CYBER THEME
-# -------------------------------
+# ------------------------------------
+# 🎨 UNIFIED SEAMLESS CYBER THEME
+# ------------------------------------
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
-/* Apply font to the entire app */
+/* Force font on all elements */
 html, body, [class*="css"], .stMarkdown {
-    font-family: 'Outfit', sans-serif;
-    color: #e2e8f0;
+    font-family: 'Outfit', sans-serif !important;
 }
 
-/* 1. Main background (Lighter, but still dark/vibrant) */
-.stApp {
-    background-color: #111625;
-    background-image: radial-gradient(circle at top right, #1a233a, #111625);
+/* 1. SEAMLESS BACKGROUND (No more blocky sidebar!) */
+.stApp, [data-testid="stSidebar"] {
+    background-color: #0b0f19 !important;
+    background-image: radial-gradient(circle at top right, #1a233a, #0b0f19) !important;
 }
 
-/* 2. Sidebar background (Deepest Navy) */
+/* Make the line dividing sidebar and page invisible for a true borderless look */
 [data-testid="stSidebar"] {
-    background-color: #090d16 !important;
-    border-right: 1px solid rgba(56, 189, 248, 0.1);
+    border-right: none !important;
 }
 
-/* Fix sidebar text color so it's readable against the dark background */
+/* 2. BRIGHTER SIDEBAR TEXT */
 [data-testid="stSidebar"] * {
-    color: #94a3b8 !important;
-}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
     color: #e2e8f0 !important;
 }
 
-/* Fix for the cut-off title (gives enough space at the top) */
+/* Active navigation item styling */
+[data-testid="stSidebarNav"] ul li div {
+    border-radius: 8px !important;
+}
+
+/* 3. FIX TITLE CLIPPING & PADDING */
 .block-container {
-    padding-top: 5rem !important;
-    padding-bottom: 5rem;
+    padding-top: 6rem !important;
+    padding-bottom: 5rem !important;
     max-width: 1200px;
 }
 
-/* Typography */
+/* High-contrast typography */
 h1 {
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.03em;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.03em !important;
     font-size: 2.8rem !important;
     margin-bottom: 0.5rem !important;
-    line-height: 1.2 !important; /* Prevents text clipping */
+    line-height: 1.4 !important;
 }
 
 h2 {
-    font-weight: 600;
-    color: #38bdf8;
+    font-weight: 600 !important;
+    color: #38bdf8 !important;
     font-size: 1.5rem !important;
     margin-top: 1.5rem !important;
-    letter-spacing: -0.01em;
 }
 
 h3 {
-    font-weight: 600;
-    color: #06b6d4;
-    font-size: 1.2rem !important;
-    margin-top: 0.5rem !important;
+    font-weight: 600 !important;
+    color: #06b6d4 !important;
+    font-size: 1.25rem !important;
     margin-bottom: 1rem !important;
 }
 
-/* Glowing Cards (Slightly darker than main page to create depth) */
+/* Glowing Cards */
 .cyber-card {
-    background: rgba(9, 13, 22, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 1.8rem;
     border-radius: 16px;
     border: 1px solid rgba(56, 189, 248, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4);
     margin-bottom: 1.5rem;
     height: 100%;
 }
 
 .cyber-card:hover {
     border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(56, 189, 248, 0.08);
+    box-shadow: 0 4px 20px 0 rgba(56, 189, 248, 0.05);
     transform: translateY(-2px);
     transition: all 0.3s ease;
 }
 
-/* Accent texts */
+/* Accents */
 .subtitle {
-    color: #a5b4fc;
-    font-weight: 600;
-    font-size: 0.95rem;
+    color: #a5b4fc !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
 .metric-highlight {
-    color: #34d399;
-    font-weight: 600;
+    color: #34d399 !important;
+    font-weight: 600 !important;
 }
 
 /* Custom horizontal rule */
@@ -114,13 +112,13 @@ hr {
     margin: 1.5rem 0;
 }
 
-/* Footer (Blending with main content background) */
+/* Footer */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(17, 22, 37, 0.95);
+    background-color: rgba(11, 15, 25, 0.95);
     backdrop-filter: blur(5px);
     color: #64748b;
     text-align: center;
@@ -128,15 +126,15 @@ hr {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.15em;
-    border-top: 1px solid rgba(56, 189, 248, 0.1);
+    border-top: 1px solid rgba(255,255,255,0.05);
     z-index: 999;
-}
-
-.stMarkdown em {
-    color: #fbbf24;
 }
 </style>
 """, unsafe_allow_html=True)
+
+# Fake sidebar content just so the active page marker has a reference
+with st.sidebar:
+    st.markdown(" ") # Spacer to respect top layout
 
 # -------------------------------
 # 🏠 HOME PAGE
@@ -216,9 +214,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# -------------------------------
-# 📌 FOOTER
-# -------------------------------
 st.markdown(
     '<div class="footer">FINAL CAPSTONE PROJECT</div>',
     unsafe_allow_html=True
